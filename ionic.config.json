@@ -1,5 +1,7 @@
 {
   "name": "gestion_user",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
