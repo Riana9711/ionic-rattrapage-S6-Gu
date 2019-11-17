@@ -7,18 +7,18 @@
 <ion-content padding>
 
   <ion-segment [(ngModel)]="selectedView">
-    <ion-segment-button value="users">
-      <ion-label>Users info</ion-label>
+    <ion-segment-button value="inscription">
+      <ion-label>Inscription</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="fiche">
-      <ion-label>fiche détaillé</ion-label>
+    <ion-segment-button value="reinscription">
+      <ion-label>Réinscription</ion-label>
     </ion-segment-button>
   </ion-segment>
 
   <div [ngSwitch]="selectedView">
-    <div *ngSwitchCase="'users'">
+    <div *ngSwitchCase="'inscription'">
       <ion-item>
-        <ion-label position="stacked">What\'s your name?</ion-label>
+        <ion-label position="stacked">Name?</ion-label>
         <ion-input [(ngModel)]="user['name']" placeholder="Developer Name"></ion-input>
       </ion-item>
       <ion-item>
@@ -44,7 +44,7 @@
       </ion-list>
     </div>
 
-    <div *ngSwitchCase="'fiche'">
+    <div *ngSwitchCase="'reinscription'">
       <!--ion-item>
         <ion-label position="stacked">Product name</ion-label>
         <ion-input [(ngModel)]="" placeholder="Name"></ion-input>
