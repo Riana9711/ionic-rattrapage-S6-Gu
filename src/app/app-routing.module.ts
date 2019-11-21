@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {
+  AuthGuardService as AuthGuard
+} from './auth/auth-guard-service.service';
 
 const routes: Routes = [
   {
@@ -9,15 +12,17 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'user', loadChildren: './user/user.module#UserPageModule' },
-  { path: 'fiche/:id', loadChildren: './fiche/fiche.module#FichePageModule' }
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule'},
+  { path: 'user', loadChildren: './pages/user/user.module#UserPageModule', canActivate : [AuthGuard]},
+  { path: 'fiche/:id', loadChildren: './pages/fiche/fiche.module#FichePageModule', canActivate : [AuthGuard]},
+  { path: 'modif/:id', loadChildren: './pages/modif/modif.module#ModifPageModule', canActivate : [AuthGuard]},
+  { path: 'search', loadChildren: './pages/search/search.module#SearchPageModule'}
 ];
 
 @NgModule({

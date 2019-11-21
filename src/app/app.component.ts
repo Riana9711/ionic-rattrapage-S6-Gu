@@ -29,6 +29,11 @@ export class AppComponent {
       icon: 'person'
     },
     {
+      title: 'search',
+      url: '/search',
+      icon: 'search'
+    },
+    {
       title: 'Logout',
       url: '/login',
       icon: 'person'
@@ -40,7 +45,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private authService : AuthentificationService
+    private authService: AuthentificationService
   ) {
     this.initializeApp();
   }
@@ -49,7 +54,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.login();
+      //this.login();
     });
   }
 

@@ -11,6 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {SQLitePorter} from "@ionic-native/sqlite-porter/ngx";
 import {SQLite} from "@ionic-native/sqlite/ngx";
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import {JwtModuleOptions} from '@auth0/angular-jwt';
+import {BaseServiceService} from './services/base-service.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +31,11 @@ import {SQLite} from "@ionic-native/sqlite/ngx";
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       SQLite,
-      SQLitePorter
+      SQLitePorter,
+      Camera,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    BaseServiceService
   ],
   bootstrap: [AppComponent]
 })

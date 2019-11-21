@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fiche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="etudiant">
+    <ion-card-header>
+      <ion-card-title>
+
+        {{ etudiant.name }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ etudiant.age }} ans
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-avatar slot="start">
+        <img [src]="etudiant.pdp">
+      </ion-avatar>
+      email = {{etudiant.email}}
+      contact = {{etudiant.contact}}
+      <!--ion-item *ngFor="let i of data.interests">
+        {{ i }}
+      </ion-item-->
+
+      <!--ion-button color="warning" [routerLink]="['/','update', etudiant.id]">Update</ion-button-->
+      <ion-button color="warning" [routerLink]="['/','modif', etudiant.id]">Update</ion-button>
+      <ion-button color="danger" (click)="deleteFiche(etudiant.id)">Delete</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

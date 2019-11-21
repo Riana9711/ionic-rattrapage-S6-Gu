@@ -1,0 +1,114 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Action
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-segment [(ngModel)]="selectedView">
+        <ion-segment-button value="inscription">
+            <ion-label>Inscription</ion-label>
+        </ion-segment-button>
+        <!--ion-segment-button value="reinscription">
+            <ion-label>Réinscription</ion-label>
+        </ion-segment-button-->
+    </ion-segment>
+
+    <div [ngSwitch]="selectedView">
+        <div *ngSwitchCase="'inscription'">
+            <ion-item>
+                <ion-label position="stacked">Name</ion-label>
+                <!--ion-input [(ngModel)]="user['name']" placeholder="Etudiant Name"></ion-input-->
+                <ion-input [(ngModel)]="etudiantNew.name" placeholder="Etudiant Name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">email</ion-label>
+                <ion-input type="email" [(ngModel)]="etudiantNew.email" placeholder="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">contact</ion-label>
+                <ion-input type="number" [(ngModel)]="etudiantNew.contact" placeholder="contact : 034 03 232 34"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Quel est votre âge ?</ion-label>
+                <ion-input type="number" [(ngModel)]="etudiantNew.age" placeholder="age"></ion-input>
+            </ion-item>
+            <ion-button (click)="openCam()">Open Camera</ion-button>
+            <img *ngIf="image" src="{{image}}" alt="Image capture">
+            <!--ion-item>
+                <ion-label position="stacked">Niveau</ion-label>
+                <ion-select [(ngModel)]="">
+                    <ion-select-option *ngFor="let dev of users"
+                                       [value]="dev.id">{{ dev.name }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">année</ion-label>
+                <ion-select [(ngModel)]="">
+                    <ion-select-option *ngFor="let dev of users"
+                                       [value]="dev.id">{{ dev.name }}</ion-select-option>
+                </ion-select>
+            </ion-item-->
+
+            <ion-button expand="block" (click)="addEtudiant()">inscrire</ion-button>
+
+        </div>
+
+        <div *ngSwitchCase="'reinscription'">
+
+            <ion-item>
+                <ion-label position="stacked">Select Etudiant</ion-label>
+                <ion-select [(ngModel)]="etudiantSelected">
+                    <ion-select-option *ngFor="let dev1 of etudiants"
+                                       [value]="dev1.id">
+                       {{ dev1.name }}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+            <!--ion-item>
+                <ion-label position="stacked">Niveau</ion-label>
+                <ion-select [(ngModel)]="">
+                    <ion-select-option *ngFor="let dev of users"
+                                       [value]="dev.id">{{ dev.name }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">année</ion-label>
+                <ion-select [(ngModel)]="">
+                    <ion-select-option *ngFor="let dev of users"
+                                       [value]="dev.id">{{ dev.name }}</ion-select-option>
+                </ion-select>
+            </ion-item-->
+
+            <ion-button expand="block" (click)="addEtudiant()">réinscrire</ion-button>
+
+            <!--ion-item>
+              <ion-label position="stacked">Product name</ion-label>
+              <ion-input [(ngModel)]="" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Creator?</ion-label>
+              <ion-select [(ngModel)]="">
+                <ion-select-option *ngFor="let dev of developers" [value]="dev.id">{{ dev.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-button expand="block" (click)="addProduct()">Add Product</ion-button>
+
+            <ion-list>
+              <ion-item *ngFor="let prod of products | async">
+                <ion-label>
+                  <h2>{{ prod.name }}</h2>
+                  <p>Created by: {{ prod.creator }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list-->
+        </div>
+    </div>
+
+</ion-content>
