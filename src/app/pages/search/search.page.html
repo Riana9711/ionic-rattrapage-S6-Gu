@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Search
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-segment [(ngModel)]="selectedView">
+    <ion-segment-button value="simple">
+      <ion-label>Simple</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="multi">
+      <ion-label>Multicritère</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="selectedView">
+    <div *ngSwitchCase="'simple'">
+      <ion-item>
+        <ion-searchbar (ionInput)="search_simple($event)" show-cancel-button="always"></ion-searchbar>
+      </ion-item>
+
+
+      <!--ion-item>
+          <ion-label position="stacked">Niveau</ion-label>
+          <ion-select [(ngModel)]="">
+              <ion-select-option *ngFor="let dev of users"
+                                 [value]="dev.id">{{ dev.name }}</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label position="stacked">année</ion-label>
+          <ion-select [(ngModel)]="">
+              <ion-select-option *ngFor="let dev of users"
+                                 [value]="dev.id">{{ dev.name }}</ion-select-option>
+          </ion-select>
+      </ion-item-->
+
+    </div>
+
+    <div *ngSwitchCase="'multi'">
+      <ion-item>
+        <ion-label position="stacked">Age Min</ion-label>
+        <ion-input type="number"  [(ngModel)]="ageMin" (ionInput)="checkMinMax($event)" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Age Max</ion-label>
+        <ion-input type="number" [(ngModel)]="ageMax" (ionInput)="checkMinMax($event)" placeholder=""></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="searchMulti()">Search</ion-button>
+      <!--ion-item>
+        <ion-label position="stacked">Select Etudiant</ion-label>
+        <ion-select [(ngModel)]="etudiantSelected">
+          <ion-select-option *ngFor="let dev1 of etudiants"
+                             [value]="dev1.id">
+            {{ dev1.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item-->
+      <!--ion-item>
+          <ion-label position="stacked">Niveau</ion-label>
+          <ion-select [(ngModel)]="">
+              <ion-select-option *ngFor="let dev of users"
+                                 [value]="dev.id">{{ dev.name }}</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label position="stacked">année</ion-label>
+          <ion-select [(ngModel)]="">
+              <ion-select-option *ngFor="let dev of users"
+                                 [value]="dev.id">{{ dev.name }}</ion-select-option>
+          </ion-select>
+      </ion-item-->
+
+
+      <!--ion-item>
+        <ion-label position="stacked">Product name</ion-label>
+        <ion-input [(ngModel)]="" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Creator?</ion-label>
+        <ion-select [(ngModel)]="">
+          <ion-select-option *ngFor="let dev of developers" [value]="dev.id">{{ dev.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" (click)="addProduct()">Add Product</ion-button>
+
+      <ion-list>
+        <ion-item *ngFor="let prod of products | async">
+          <ion-label>
+            <h2>{{ prod.name }}</h2>
+            <p>Created by: {{ prod.creator }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list-->
+    </div>
+    <div *ngIf="etudiants">
+      <ion-list>
+        <ion-item button *ngFor="let dev of etudiants" [routerLink]="['/', 'fiche', dev.id]">
+          <ion-avatar slot="start">
+            <img [src]="dev.pdp">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ dev.name }}</h2>
+            <p>{{ dev.age }} ans izy </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+
+</ion-content>

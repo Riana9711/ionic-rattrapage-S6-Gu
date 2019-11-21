@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>UPDATE FICHE</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+        <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <!--ion-input [(ngModel)]="user['name']" placeholder="Etudiant Name"></ion-input-->
+            <ion-input [(ngModel)]="etudiant.name" placeholder="Etudiant Name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">email</ion-label>
+            <ion-input type="email" [(ngModel)]="etudiant.email" placeholder="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">contact</ion-label>
+            <ion-input type="email" [(ngModel)]="etudiant.contact" placeholder="contact : 034 03 232 34"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Quel est votre âge ?</ion-label>
+            <ion-input type="number" [(ngModel)]="etudiant.age" placeholder="age"></ion-input>
+        </ion-item>
+        <ion-button (click)="openCam()">Open Camera</ion-button>
+        <img *ngIf="image" src="{{image}}" alt="Image capture">
+
+        <ion-button color="primary" (click)="saveChange()">save</ion-button>
+
+</ion-content>
